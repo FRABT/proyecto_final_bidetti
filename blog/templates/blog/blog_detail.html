@@ -1,0 +1,12 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block content %}
+
+<h2>{{ blog.title }}</h2>
+<hr></hr>
+<p><h4>{{ blog.subtitle }}</h4></p>
+<p><h5>{{ blog.date }}, {{blog.autor}}</h5></p>
+<p><textarea readonly rows="7" cols="90" >{{ blog.body }}</textarea></p>
+<p><a class="btn2 btn-primary" href="{% url 'blog:Blogs' %}">Go back</a></p>
+
+{% endblock %}

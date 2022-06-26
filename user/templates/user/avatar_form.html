@@ -1,0 +1,15 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block content %}
+
+<h2>Change avatar</h2>
+<hr></hr>
+<h3>User: {{user.username}}</h3>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+{% endblock %}

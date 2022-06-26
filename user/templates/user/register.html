@@ -1,0 +1,18 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block content %}
+
+<h2>Registration</h2>
+<hr></hr>
+
+{% if form.errors %}
+<p style="color: red">Please check the information.</p>
+{% endif %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+</form>
+
+{% endblock %}

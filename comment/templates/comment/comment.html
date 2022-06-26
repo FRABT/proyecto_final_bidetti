@@ -1,0 +1,14 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block content %}
+
+<h2> COMMENTS </h2>
+
+<a class="card_custom" href="{% url 'comment:CommentForm' %}">Create comment</a>
+
+<div class="text-lg-start bg-dark text-white">
+    <ul>
+        <!--Mostrar los datos del blog--->
+    </ul>
+</div>
+{% endblock %}
