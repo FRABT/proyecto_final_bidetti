@@ -14,17 +14,17 @@ class CommentListView(ListView):
 class CommentDetailView(DetailView):
     model = Comment
     template_name = "comment/comment_detail.html"
-    fields = ['date', 'blog_title', 'comment']
+    fields = ['date', 'blog_title', 'comments']
 
 class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
     success_url = reverse_lazy('comment:comment-list')
-    fields = ['date', 'blog_title', 'comment']
+    fields = ['date', 'blog_title', 'comments']
 
 class CommentUpdateView(LoginRequiredMixin, UpdateView):
     model = Comment
     success_url = reverse_lazy('comment:comment-list')
-    fields = ['date', 'blog_title', 'comment']
+    fields = ['date', 'blog_title', 'comments']
 
 class CommentDeleteView(LoginRequiredMixin, DeleteView):
     model = Comment
