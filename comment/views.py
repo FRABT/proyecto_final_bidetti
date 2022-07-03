@@ -1,49 +1,31 @@
 from django.shortcuts import render
 from comment.models import Comment
-from comment.forms import CommentForm
+from django.views.generic.detail import DetailView
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 
-def comment(request):
-    comments = Comment.objects.all()
+class CommentListView(ListView):
+    model = Comment
+    template_name = "comment/comment_list.html"
 
-    context_dict = {
-        'comments' : comments
-    }
+class CommentDetailView(DetailView):
+    model = Comment
+    template_name = "comment/comment_detail.html"
+    fields = ['date', 'blog_title', 'comment']
 
-    return render(
-        request=request,
-        context=context_dict,
-        template_name="comment/comment.html"
-    )
+class CommentCreateView(LoginRequiredMixin, CreateView):
+    model = Comment
+    success_url = reverse_lazy('comment:comment-list')
+    fields = ['date', 'blog_title', 'comment']
 
-def comment_forms_view(request):
-    if request.method == 'POST':
-        comment_form = CommentForm(request.POST)
-        if comment_form.is_valid():
-            data = comment_form.cleaned_data
-            comment = Comment(
-                date=data['date'],
-                title=data['title'],
-                body=data['body'],
-            )
-            comment.save()
+class CommentUpdateView(LoginRequiredMixin, UpdateView):
+    model = Comment
+    success_url = reverse_lazy('comment:comment-list')
+    fields = ['date', 'blog_title', 'comment']
 
-            comments = Comment.objects.all()
-            context_dict = {
-                'comments': comments
-            }
-            return render(
-                request=request,
-                context=context_dict,
-                template_name="comment/comment.html"
-            )
-
-    comment_form = CommentForm(request.POST)
-    context_dict = {
-        'comment_form': comment_form
-    }
-    return render(
-        request=request,
-        context=context_dict,
-        template_name='comment/comment_forms.html'
-    )
+class CommentDeleteView(LoginRequiredMixin, DeleteView):
+    model = Comment
+    success_url = reverse_lazy('comment:comment-list')

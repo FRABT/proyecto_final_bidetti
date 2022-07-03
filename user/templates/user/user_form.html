@@ -6,6 +6,11 @@
 <hr></hr>
 <h3>User: {{user.username}}</h3>
 
+<h6><a href="{% url 'user:avatar-load' %}">Change Avatar</a></h6>
+<img height="160px" src="{{url}}" alt="">
+
+<br></br>
+
 <form action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}

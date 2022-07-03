@@ -1,0 +1,11 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block content %}
+
+<h2>{{ comment.blog_title }}</h2>
+<hr></hr>
+<p><h5>{{ comment.date }}</h5></p>
+<p><textarea readonly rows="7" cols="90" >{{ comment.comments }}</textarea></p>
+<p><a class="btn2 btn-primary" href="{% url 'comment:comment-list' %}">Go back</a></p>
+
+{% endblock %}

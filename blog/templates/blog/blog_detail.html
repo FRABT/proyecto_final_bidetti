@@ -7,6 +7,10 @@
 <p><h4>{{ blog.subtitle }}</h4></p>
 <p><h5>{{ blog.date }}, {{blog.autor}}</h5></p>
 <p><textarea readonly rows="7" cols="90" >{{ blog.body }}</textarea></p>
-<p><a class="btn2 btn-primary" href="{% url 'blog:Blogs' %}">Go back</a></p>
+{% if blog.photo %}
+    <img src="{{ blog.photo.url }}">
+{% endif %}
+<img height="160px" src="{{blog.photo}}" alt="">
+<p><a class="btn2 btn-primary" href="{% url 'blog:blog-list' %}">Go back</a></p>
 
 {% endblock %}

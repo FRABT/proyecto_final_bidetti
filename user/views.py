@@ -53,6 +53,12 @@ def logout_request(request):
       logout(request)
       return redirect("user:user-login")
 
+def get_avatar_url_ctx(request):
+    avatars = Avatar.objects.filter(user=request.user.id)
+    if avatars.exists():
+        return {"url": avatars[0].image.url}
+    return {}
+
 @login_required
 def user_update(request):
     user = request.user
@@ -64,9 +70,15 @@ def user_update(request):
             return redirect('home:main')
 
     form= UserEditForm(model_to_dict(user))
+
+    avatar_ctx = get_avatar_url_ctx(request)
+
+    context_dict = {**avatar_ctx}
+
+    context_dict.update({'form': form})
     return render(
         request=request,
-        context={'form': form},
+        context=context_dict,
         template_name="user/user_form.html",
     )
 

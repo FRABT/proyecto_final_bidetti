@@ -1,0 +1,35 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block content %}
+
+<h2>Comments</h2>
+{% if user.is_authenticated %}
+<a class="card_custom" href="{% url 'comment:comment-add' %}">Create new comment</a>
+{% endif %}
+<hr></hr>
+<ul>
+    <div class="text-lg-start">
+    {% for comment in comment_list %}
+    <li>
+        {{comment}}
+        (
+            <a href="{% url 'comment:comment-detail' comment.id %}">
+                <i class="fa fa-eye" style="color: rgb(0, 0, 255);"> </i>
+            </a>
+        {% if user.is_authenticated %}
+        |
+        <a href="{% url 'comment:comment-update' comment.id %}">
+            <i class="fa fa-pencil" style="color: rgb(0, 0, 190);"> </i>
+        </a>
+        |
+        <a href="{% url 'comment:comment-delete' comment.id %}">
+            <i class="fa fa-trash" style="color: rgb(0, 0, 100);"> </i>
+        </a>
+        {% endif %}
+        )
+    </li>
+    {% endfor %}
+    </div>
+</ul>
+
+{% endblock %}

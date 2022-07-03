@@ -1,0 +1,16 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block content %}
+
+<h2>Delete comment</h2>
+<hr></hr>
+
+<p>Are you sure you want to delete the comment?</p>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <input class="btn2 btn-warning" type="submit" value="Yes, delete.">
+    <a class="btn2 btn-primary" href="{% url 'comment:comment-list' %}" >Cancel</a>
+</form>
+
+{% endblock %}

@@ -25,8 +25,8 @@
         <nav class="navbar navbar-light bg-dark static-top">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'home:main' %}">Home</a>
-                <a class="navbar-brand" href="{% url 'blog:Blogs' %}">Blogs</a>
-                <a class="navbar-brand" href="{% url 'comment:Comments' %}">Comments</a>
+                <a class="navbar-brand" href="{% url 'blog:blog-list' %}">Blogs</a>
+                <a class="navbar-brand" href="{% url 'comment:comment-list' %}">Comments</a>
                 {% if user.is_authenticated %}
                 <a class="navbar-brand" href="{% url 'user:user-update' %}">User</a>
                 <a class="btn btn-primary" href="{% url 'user:user-logout' %}">Logout</a>

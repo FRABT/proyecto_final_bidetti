@@ -7,6 +7,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=50)
     subtitle = models.CharField(max_length=50)
     body = models.CharField(max_length=500)
+    photo = models.ImageField(upload_to='images/', null=True, blank=True)
 
     def __str__(self):
         return f'   {self.title}   '
