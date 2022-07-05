@@ -1,6 +1,8 @@
 # Desarrollador: Bidetti Torres Franco
     Trabajo realizado: Todo.
 
+    Video: https://youtu.be/DK7CXctD7_k
+
 # Instrucciones para ejecutar este proyecto
 
 - Clonar el proyecto y cambiar de rama
@@ -44,20 +46,4 @@ python manage.py createsuperuser
 - Ejecutar proyecto
 ```bash
 python manage.py runserver
-```
-
-- Navegar en la web
-```bash
-Ingresar a:
-    http://127.0.0.1:8000/app_blog
-
-    Los formularios para insertar datos en:
-        
-        Clase User: Entrar a User >>> Create User
-        Clase Blog: Entrar a Blog >>> Create Blog
-        Clase Comment: Entrar a Comment >>> Create Comment
-
-    El formulario para buscar elgo en la BD(En este caso en la Clase User):
-
-        Entrar a User >>> Search User
 ```
